@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <title>Blank App Designer Cordova Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Recommended location for your JavaScript libraries -->
+        <!-- These library references (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script src="js/push.js"></script>
+        <script src="js/PushNotification.js"></script>
+
+        <script src="js/jquery_1.5.2.min.js"></script>
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+        <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+        <script type="application/javascript" src="app_framework/themeRelease.js"></script>
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+        <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/ad/bs_subpage.js"></script>
+        <script type="application/javascript" src="galleria/galleria-1.3.6.min.js"></script>
+        <script type="application/javascript" src="galleria/galleria.classic.min.js"></script>
+        <script type="application/javascript" src="galleria/galleria-startup.js"></script>
+        <script type="application/javascript" src="lib/underscore.min.js"></script>
+        <script type="application/javascript" src="lib/backbone.js"></script>
+        <script type="application/javascript" src="lib/Backbone.ModelBinder.min.js"></script>
+        <script type="application/javascript" src="xdk/ad/backbone_support.js"></script>
+        <script type="application/javascript" src="xdk/ad/jquery.ba-throttle-debounce.min.js"></script>
+        <script type="application/javascript" src="xhr.js"></script>
+        <script type="application/javascript" src="xdk/services/service-credentials.js"></script>
+        <script type="application/javascript" src="xdk/services/service-methods.js"></script>
+        <script type="application/javascript" src="xdk/ad/ad_events_data.js"></script>
+        <script type="application/javascript" src="js/index_init_services.js"></script>
+        <script type="application/javascript" src="xdk/ad/index_setup_services.js"></script>
+
+        <!-- Registro de Token pela versão velha PluginPush -->
+        <script src="js/RegistroToken.js"></script>
+
+    </head>
+
+    <body>
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+        <div class="upage" id="mainpage" data-role="page">
+            <div class="upage-outer">
+                <div class="uib-header header-bg container-group inner-element uib_w_38 uib-header-fixed" data-uib="layout/header" data-ver="0">
+                    <h2></h2>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col right"></div>
+                </div>
+
+                <div class="uib-footer uib-footer-fixed footer-bg container-group inner-element uib_w_2" data-uib="layout/footer" data-ver="0">
+                    <h2></h2>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left">
+                        <button class="btn widget uib_w_3 d-margins btn-warning" data-uib="twitter%20bootstrap/button" data-ver="1"><i class="glyphicon glyphicon-home button-icon-left" data-position="left"></i>&nbsp;</button>
+                        <button class="btn widget uib_w_4 d-margins btn-secondary" data-uib="twitter%20bootstrap/button" data-ver="1"><i class="glyphicon button-icon-left" data-position="left"></i>Coffee Break &nbsp;&nbsp;</button>
+                        <button class="btn widget uib_w_5 d-margins btn-secondary" data-uib="twitter%20bootstrap/button" data-ver="1"><i class="glyphicon button-icon-left" data-position="left"></i>Kit Festa &nbsp;</button>
+                        <button class="btn widget uib_w_6 d-margins btn-secondary" data-uib="twitter%20bootstrap/button" data-ver="1"><i class="glyphicon button-icon-left" data-position="left"></i>Bolos &nbsp;</button>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right">
+
+                    </div>
+                </div>
+                <div id="bolos" class="upage-content hidden vertical-col">
+                    <div class="widget uib_w_32 d-margins coffeebreak" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/BoloBanner.png">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#prestigio" data-parent="#prestigio">Delicia Prestigio
+       <div class="label label-success label-topright"> R$32,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="prestigio" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloDeliciaPrestigio.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#maracuja" data-parent="#bs-accordion-0">Maracuja
+       <div class="label label-success label-topright"> R$32,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="maracuja" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloDeMaracuja.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#suica" data-parent="#bs-accordion-0">Floresta Branca Suica
+       <div class="label label-success label-topright"> R$43,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="suica" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloFlorestaBrancaSuica.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#negra" data-parent="#bs-accordion-0">Floresta Negra
+       <div class="label label-success label-topright"> R$43,90 por Kg </div></div>
+                            </h4>
+                            <span class="uib_shim"></span>
+                        </div>
+                        <div id="negra" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloFlorestaNegra.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#rocha" data-parent="#bs-accordion-0">Marta Rocha
+      <div class="label label-success label-topright"> R$41,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                             </h4>
+                        </div>
+                        <div id="rocha" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/MartaRocha.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#frutas" data-parent="#bs-accordion-0">Frutas
+       <div class="label label-success label-topright"> R$32,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                            </h4>
+                        </div>
+                        <div id="frutas" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloRecheioFrutas.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#trufado" data-parent="#bs-accordion-0">Trufado
+       <div class="label label-success label-topright"> R$43,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="trufado" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloTrufado.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#amores" data-parent="#bs-accordion-0">Dois Amores
+       <div class="label label-success label-topright"> R$37,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="amores" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/DoisAmoresNovo.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#morango" data-parent="#bs-accordion-0">Morango
+       <div class="label label-success label-topright"> R$41,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="morango" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/Morango.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#branco" data-parent="#bs-accordion-0">Ouro Branco
+       <div class="label label-success label-topright"> R$42,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="branco" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/OuroBranco.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#sensacao" data-parent="#bs-accordion-0">Sensação
+       <div class="label label-success label-topright"> R$42,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="sensacao" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/SensacaoBranco.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#valsa" data-parent="#bs-accordion-0">Sonho de Valsa
+       <div class="label label-success label-topright"> R$42,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="valsa" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/SonhoDeValsa.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#suflair" data-parent="#bs-accordion-0">Suflair
+       <div class="label label-success label-topright"> R$42,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="suflair" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/Suflair.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#xuxa" data-parent="#bs-accordion-0">Xuxa com Morango
+       <div class="label label-success label-topright"> R$42,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="xuxa" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/XuxaComMorango.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel widget uib_w_28 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#brigadeiro" data-parent="#bs-accordion-0">Brigadeiro
+       <div class="label label-success label-topright"> R$38,90 por Kg </div></div>
+                            <span class="uib_shim"></span>
+                        </h4>
+                        </div>
+                        <div id="brigadeiro" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="col uib_col_10 single-col" data-uib="layout/col" data-ver="0">
+                                    <div class="widget-container content-area vertical-col">
+                                        <div class="widget uib_w_31 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                            <figure class="figure-align">
+                                                <img src="gallery_bolos/BoloBrigadeiro.jpg">
+
+                                                <figcaption data-position="bottom"></figcaption>
+                                            </figure>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                <div id="coffee" class="upage-content hidden vertical-col">
+                    <div class="widget uib_w_25 d-margins coffeebreak" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/CoffeeBreakBanner2.png">
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    
+                    <div class="panel-group no_wrap widget uib_w_13 d-margins" data-uib="twitter%20bootstrap/accordion" data-ver="1" id="bs-accordion-1">
+                        <div class="panel widget uib_w_14 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeGold">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">                                    
+                                        <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-5" data-parent="#bs-accordion-1">Coffee Gold<div class="label label-success label-topright">R$11,50 por pessoa</div></div>
+                        <span class="uib_shim"></span>
+                        </h4>
+                            </div>
+                            <div id="bs-accordion-group-5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_7 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_17 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/gold.png">
+
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_21 d-margins" data-uib="media/text" data-ver="0" name="uib_w_21">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Porção média de 10 itens por pessoa.
+                                                        <br>
+                                                        <br>400 ml de bebida por pessoa.
+                                                        <br>
+                                                        <br>Dez opções do cardápio entre doces e salgados.
+                                                        <br>
+                                                        <br>Três opções de bebida + Copos Descartáveis.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel widget uib_w_15 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeSilver">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-6" data-parent="#bs-accordion-1">Coffee Silver
+                        <div class="label label-success label-topright">R$9,50 por pessoa</div></div>
+                        <span class="uib_shim"></span>
+                                </h4>
+                            </div>
+                            <div id="bs-accordion-group-6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_8 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_19 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/silver.png">
+                                                    <figcaption data-position="bottom"></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_22 d-margins" data-uib="media/text" data-ver="0" name="uib_w_22">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Porção média de 8 itens por pessoa.
+                                                        <br>
+                                                        <br>350 ml de bebida por pessoa.
+                                                        <br>
+                                                        <br>Oito opções do cardápio entre doces e salgados.
+                                                        <br>
+                                                        <br>Duas opções de bebida + Copos Descartáveis.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel widget uib_w_16 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeBronze">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-7" data-parent="#bs-accordion-1">Coffee Bronze
+                        <div class="label label-success label-topright">R$8,50 por pessoa</div></div>
+                        <span class="uib_shim"></span>
+       </h4>
+                            </div>
+                            <div id="bs-accordion-group-7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_9 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_20 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/bronze.png">
+                                                    <figcaption data-position="bottom"></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_23 d-margins" data-uib="media/text" data-ver="0" name="uib_w_23">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">Porção média de 5 itens por pessoa.
+                                                        <br>
+                                                        <br>300 ml bebida por pessoa.
+                                                        <br>
+                                                        <br>Cinco opções do cardápio entre doces e salgados.
+                                                        <br>
+                                                        <br>Duas opção de bebida + Copos Descartáveis.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div id="festa" class="upage-content hidden vertical-col">
+                    <div class="widget uib_w_26 d-margins coffeebreak" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <img src="images/kitFestaBanner.png">
+
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                    <div class="panel-group no_wrap widget uib_w_13 d-margins" data-uib="twitter%20bootstrap/accordion" data-ver="1" id="bs-accordion-1">
+                        <div class="panel widget uib_w_14 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeGold">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-kit1" data-parent="#bs-accordion-1">Festa Gold
+                        <div class="label label-success label-topright"> R$299,00 (30 Pessoas) </div></div>
+                        <span class="uib_shim"></span>
+                        </h4>
+                            </div>
+                            <div id="bs-accordion-group-kit1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_7 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_17 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/gold.png">
+
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_21 d-margins" data-uib="media/text" data-ver="0" name="uib_w_21">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">
+                                                        <br>3 Kg Bolo (Consulte sabores).
+
+                                                        <br>250 Salgadinhos (Coxinha, Risoles, Bolinha Queijo, Kibe ou Mini pastel).
+
+                                                        <br>180 Docinhos (Brigadeiro, Dois Amores, Beijinho, Olho de Sogra ou Cajuzinho).
+
+                                                        <br>10 litros de refrigerante (Coca cola, Fanta, Kuat ou Sprite).
+
+                                                        <br>30 copos descartáveis.
+
+                                                        <br>50 guardanapos.
+
+                                                        <br>30 pratos.
+
+                                                        <br>50 garfos.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel widget uib_w_15 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeSilver">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-kit2" data-parent="#bs-accordion-1">Festa Silver
+                        <div class="label label-success label-topright"> R$399,00 (50 Pessoas) </div></div>
+                        <span class="uib_shim"></span>
+       </h4>
+                            </div>
+                            <div id="bs-accordion-group-kit2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_8 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_19 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/silver.png">
+                                                    <figcaption data-position="bottom"></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_22 d-margins" data-uib="media/text" data-ver="0" name="uib_w_22">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">
+                                                        <br>5 Kg Bolo (Consulte sabores).
+
+                                                        <br>400 Salgadinhos (Coxinha, Risoles, Bolinha Queijo, Kibe ou Mini pastel).
+
+                                                        <br>250 Docinhos (Brigadeiro, Dois Amores, Beijinho, Olho de Sogra ou Cajuzinho).
+
+                                                        <br>20 litros de refrigerante (Coca cola, Fanta, Kuat ou Sprite).
+
+                                                        <br>50 copos descartáveis.
+
+                                                        <br>50 guardanapo.
+
+                                                        <br>50 pratos.
+
+                                                        <br>50 garfos.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel widget uib_w_16 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1" id="CoffeeBronze">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+           <div class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-kit3" data-parent="#bs-accordion-1">Festa Bronze
+                        <div class="label label-success label-topright"> R$649,00 (80 Pessoas) </div></div>
+                        <span class="uib_shim"></span>
+       </h4>
+                            </div>
+                            <div id="bs-accordion-group-kit3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col uib_col_9 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <div class="widget uib_w_20 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                                <figure class="figure-align">
+                                                    <img src="images/bronze.png">
+                                                    <figcaption data-position="bottom"></figcaption>
+                                                </figure>
+                                            </div>
+                                            <div class="tarea widget uib_w_23 d-margins" data-uib="media/text" data-ver="0" name="uib_w_23">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <div style="background:#eee;border:1px solid #ccc;padding:5px 10px;">
+                                                        <br>8 Kg Bolo (Consulte sabores).
+
+                                                        <br>650 Salgadinhos (Coxinha, Risoles, Bolinha Queijo, Kibe ou Mini pastel).
+
+                                                        <br>450 Docinhos (Brigadeiro, Dois Amores, Beijinho, Olho de Sogra ou Cajuzinho).
+
+                                                        <br>30 litros de refrigerante (Coca cola, Fanta, Kuat ou Sprite).
+
+                                                        <br>100 copos descartáveis.
+
+                                                        <br>100 guardanapos.
+
+                                                        <br>80 pratos.
+
+                                                        <br>100 garfos.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div id="feed" class="upage-content hidden vertical-col">
+
+  
+                </div>
+
+                <div id="detalhar2" class="upage-content vertical-col left hidden">
+
+                
+                </div>
+            </div>
+        </div>
+
+        <!-- Atualizar posts a cada x segundos -->
+        <script>
+            /*function limpDet(){
+                document.getElementById('detalhar').innerHTML = '';
+
+                }*/
+            
+            var detalhar; 
+            
+            /*function listarPosts(detid) {
+                    
+                    var url = "http://breadtimeup.esy.es/breadtime/exportarfeed.php";
+                
+                    var resultado = '';
+                    $.getJSON(url, function (json) {   
+                         
+                        
+                    resultado+= "<div class=\"list-group widget uib_w_33 d-margins\" data-uib=\"twitter%20bootstrap/list_group\" data-ver=\"1\">";
+                    resultado+= "<a class=\"list-group-item allow-badge widget uib_w_34 template\" data-uib=\"twitter%20bootstrap/list_item\" data-ver=\"1\" data-sm=\"json\" data-sc=\"multiple\"  data-rpath=\".Feed[]\"><span class=\"badge glyphicon glyphicon-plus\"> </span>";
+                    
+                    resultado+= "<h4 class=\"list-group-item-heading\" style=\"align: center\">{{title}}</h4>";
+                    resultado+= "<figure class=\"figure-align\">";
+                    resultado+= "<img src=\"http://breadtimeup.esy.es/breadtime/uploads/{{miniatura}}\">";
+                    resultado+= "<figcaption data-position=\bottom\"></figcaption>";
+                    resultado+= "</figure></a></div><br><br><br>";
+                    */
+
+                        /*for(x in json.Feed){    
+                            
+                            resultado +="<div class=\"\" data-uib=\"twitter%20bootstrap/list_group\">";         
+                            resultado +="<a class=\"list-group-item allow-badge widget uib_w_34\"  >";
+                            resultado +="<div class=\"list-group widget uib_w_35 d-margins\">";
+                            resultado +="<button class=\"btn widget uib_w_37 d-margins btn-link\">";
+                            resultado +="<i class=\"glyphicon glyphicon-chevron-left\"></i></button>";
+                            resultado +="<a class=\"list-group-item allow-badge widget uib_w_36\">";
+                            resultado +="<h4 class=\"list-group-item-heading>\"<strong>"+json.Feed[5].title+"</strong></h4>";
+                            resultado += "<figure class=\"figure-align\">";
+                            resultado += "<img src=\"http://breadtimeup.esy.es/breadtime/uploads/"+json.Feed[5].miniatura;
+                            resultado += "\">";
+                            resultado += "</figure><br><p class=\"list-group-item-text\">"+json.Feed[5].conteudo+"</p></a>";
+                            resultado += "</div>";
+                            resultado += "<br><br><br>"
+                            resultado +="<span class=\"badge glyphicon glyphicon-plus\" > </span>";
+                            resultado +="<h4 class=\"list-group-item-heading\" style=\"align: center\">"+json.Feed[x].title+"</h4>";                             
+                            resultado += "<figure class=\"figure-align\">";
+                            resultado += "<img width=\"200\" height=\"180\" src=\"http://breadtimeup.esy.es/breadtime/uploads/"+json.Feed[x].miniatura;
+                            resultado += "\">";
+                            resultado += "<figcaption data-position=\"bottom\"></figcaption>";
+                            resultado += "</figure></a>";
+                            resultado += "</div>"; 
+                            */
+                            /*if (detid == json.Feed[x].id){
+                                detid = x
+                            }*/
+                            
+                        //}
+
+                        //resultado += "<br><br><br>"
+
+                        /*if (detid != undefined){
+                            document.getElementById('detalhar').innerHTML = '';
+                            detalhar ="<div class=\"list-group widget uib_w_35 d-margins\">";
+                            detalhar +="<button class=\"btn widget uib_w_37 d-margins btn-link\">";
+                            detalhar +="<i class=\"glyphicon glyphicon-chevron-left\"></i></button>";
+                            detalhar +="<a class=\"list-group-item allow-badge widget uib_w_36\">";
+                            detalhar +="<h4 class=\"list-group-item-heading>\"<strong>"+json.Feed[detid].title+"</strong></h4>";
+                            detalhar += "<figure class=\"figure-align\">";
+                            detalhar += "<img src=\"http://breadtimeup.esy.es/breadtime/uploads/"+json.Feed[detid].miniatura;
+                            detalhar += "\">";
+                            detalhar += "</figure><br><p class=\"list-group-item-text\">"+json.Feed[detid].conteudo+"</p></a>";
+                            detalhar += "</div>";
+                            detalhar += "<br><br><br>"
+                            document.getElementById('detalhar').innerHTML = detalhar;
+                        }  */         
+                        //document.getElementById('feed').innerHTML = resultado;        
+                    /*});
+                    
+                    setTimeout(function(){ listarPosts() }, 3000);
+            }
+               
+            
+            
+            listarPosts();*/
+        </script>
+
+    </body>
+
+</html>
