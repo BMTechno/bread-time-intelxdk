@@ -1,3 +1,3 @@
 # bread-time-intelxdk
 
-Aplcativo mobile integrado com a aplicação web PHP/MySql
+Mobile application (Javascript) integrated with web application #bread-time-php.
